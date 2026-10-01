@@ -1,0 +1,31 @@
+@page "/media"
+@rendermode InteractiveServer
+
+<PageTitle>Media calculator</PageTitle>
+<h1>Media calculator</h1>
+<p>Input the two notes:</p>
+
+<input type="number" @bind="nota2"/>
+<input type="number" @bind="nota1"/>
+
+<button @onclick="CalcularMedia">CALCULATE</button>
+
+@if (media != null && media >= 0){
+    <p><br />Media = @media</p>
+    if (media >= 7){
+        <p style="color: green;">Aprovado!</p>
+    } else {
+        <p style="color: red;">Reprovado!</p>
+    }
+} else if (media < 0){
+    <p><br />Valor invalido</p>
+}
+
+@code{
+    private double nota1, nota2;
+    private double? media = null;
+
+    private void CalcularMedia(){
+        media = (nota1+nota2)/2;
+    }
+}
